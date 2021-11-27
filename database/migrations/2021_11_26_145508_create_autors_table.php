@@ -17,7 +17,8 @@ class CreateAutorsTable extends Migration
             $table->id();
             $table->string('fio');
             $table->year('birth_year');
-            $table->text('biography');
+            $table->text('biography')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

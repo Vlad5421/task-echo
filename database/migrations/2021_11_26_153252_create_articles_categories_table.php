@@ -15,7 +15,7 @@ class CreateArticlesCategoriesTable extends Migration
     {
         Schema::create('articles_categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('parent_id');
+            $table->integer('parent_id')->default(1);
             $table->string('category_name');
             $table->string('category_img');
             $table->string('note');
