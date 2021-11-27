@@ -16,7 +16,7 @@ class CreateAutorsTable extends Migration
         Schema::create('autors', function (Blueprint $table) {
             $table->id();
             $table->string('fio');
-            $table->year('birthYear');
+            $table->year('birth_year');
             $table->text('biography');
             $table->timestamps();
         });

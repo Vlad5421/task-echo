@@ -15,6 +15,11 @@ class CreateArticlesCategoriesTable extends Migration
     {
         Schema::create('articles_categories', function (Blueprint $table) {
             $table->id();
+            $table->integer('parent_id');
+            $table->string('category_name');
+            $table->string('category_img');
+            $table->string('note');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
