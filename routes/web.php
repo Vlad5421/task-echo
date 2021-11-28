@@ -25,4 +25,6 @@ Route::get('articles', function () {
     return view('articles');
 });
 
-
+Route::get('articles-categoryes', function () {
+    return view('atriclesCategory');
+});

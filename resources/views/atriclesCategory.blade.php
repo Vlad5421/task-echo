@@ -21,49 +21,58 @@
     </style>
 </head>
 <body>
-
-<h1>Авторы</h1>
+<h1>Категории статей (список получен с rest api методом post)</h1>
 
 <div class="container">
     <table>
+
     </table>
 </div>
+
 <script>
-    const autorTable = document.querySelector('table');
+
+
+    const categoryTable = document.querySelector('table');
     const createTr = (elem)=>{
         let trs = document.createElement('tr');
-        let tdFio = document.createElement('td');
-        let tdYear = document.createElement('td');
-        let tdFSlug = document.createElement('td');
-        tdFio.innerText = elem.fio;
-        tdYear.innerText = elem.birth_year;
-        tdFSlug.innerText = elem.slug;
-        trs.appendChild(tdFio);
-        trs.appendChild(tdYear);
-        trs.appendChild(tdFSlug);
+        let tdName = document.createElement('td');
+        let tdNote = document.createElement('td');
+        let tdImg = document.createElement('td');
+        let tdParent = document.createElement('td');
+        tdName.innerText = elem.category_name;
+        tdNote.innerText = elem.note;
+        tdImg.innerText = elem.category_img;
+        tdParent.innerText = elem.parent_id;
+        trs.appendChild(tdName);
+        trs.appendChild(tdNote);
+        trs.appendChild(tdImg);
+        trs.appendChild(tdParent);
         return trs;
     }
     const makeTable = (el) => {
-        el.forEach((autor)=>{
-            autorTable.appendChild(createTr(autor));
+        el.forEach((category)=>{
+            categoryTable.appendChild(createTr(category));
         });
     }
 
-    let autors;
+    let categoryes;
     let strigs = {
         serchField: 'id',
         metodfiel: 'hz'
     };
 
-    fetch('/api/autors',{
+    fetch('/api/articles-categoryes',{
         method: 'POST',
     })
         .then(data=> data.json())
         .then((data) => {
-            autors = data.data;
-            makeTable(autors);
+            categoryes = data.data;
+            makeTable(categoryes);
         })
 
 </script>
+
+
 </body>
+
 </html>

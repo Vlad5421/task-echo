@@ -27,5 +27,15 @@ class ArticlesCategoryController extends Controller
     {
         return $this->model::paginate(3);
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        return $this->model::paginate(3);
+    }
 
 }
