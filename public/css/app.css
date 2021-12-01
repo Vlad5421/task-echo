@@ -1,7 +1,8 @@
 body {
     font-family: 'Nunito', sans-serif;
+    padding-left: 20px;
 }
-.btn, .button_get, .button_search{
+.btn, .button_api, .button_search{
     display: inline-block;
     padding: 7px;
     background-color: #19ff5f;
@@ -16,7 +17,9 @@ a.relative{
     margin-right: 10px;
 }
 .wrapper{
+    border: 1px solid #4a5568;
     margin-top: 20px;
+    padding: 25px;
 }
 input[type="text"]{
     border: 1px solid gray;
@@ -24,7 +27,7 @@ input[type="text"]{
 hr{
     border: 1px solid gray;
 }
-.articles__api, .articles__serch{
+.display_none {
     display: none;
 }
 .btn_row{

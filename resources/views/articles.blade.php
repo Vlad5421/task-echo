@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link href="/css/app.css" rel="stylesheet" />
     <title>Laravel</title>
 
     <!-- Fonts -->
@@ -15,65 +15,118 @@
     </style>
 
     <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-        }
+
     </style>
 </head>
 <body>
 
 <h1>Статьи</h1>
+<div class="btn_row">
+    <h2 class="btn" data-tab="get">GET</h2>
+    <h2 class="btn" data-tab="api">API</h2>
+    <h2 class="btn" data-tab="serch">Поиск</h2>
 
-<div class="container">
-    <table>
+</div>
 
+<div class="wrapper" data-tab="get">
+    <div class="container">
+        @foreach( $articles as $art )
+            <div>{{ $art->id }}</div>
+        @endforeach
+        {{ $articles->onEachSide(2)->links() }}
+    </div>
+</div>
+
+
+<div class="wrapper display_none" data-tab="api">
+    <table class="apiTable">
+        <caption>Записи, полученные по api</caption>
+    </table>
+    <div class="button_api">Получить по API</div>
+</div>
+
+<div class="wrapper display_none" data-tab="serch">
+
+        <label for="serchField">Поиск: </label>
+            <input type="text" name="serchString" placeholder="Введите фразу для поиска"><br>
+        <label for="serchField">Искать по: </label><br>
+            <input type="radio" name="serchField" value="title" checked><span> заголовку</span><br>
+            <input type="radio" name="serchField" value="autor"><span> автору</span><br>
+            <input type="radio" name="serchField" value="category"><span> категории</span><br>
+        <button type="submit" class="button_search">ПОИСК</button>
+
+
+    <table class="serchTable" style="display: none">
+        <caption>Записи, полученные по api</caption>
     </table>
 </div>
 
+
+
+
 <script>
+    // переключение табов
+    const tabBtns = document.querySelectorAll('.btn')
+    const tabs = document.querySelectorAll('.wrapper')
 
+    let selector;
+    tabBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) =>{
+            tabs.forEach( tab => tab.style.display = 'none' )
+            selector = `[data-tab = ${e.target.dataset.tab}]`;
+            document.querySelector('.wrapper' + selector).style.display = 'block';
+        })
+    })
 
-    const autorTable = document.querySelector('table');
+    // Функции внесения полученных данных в таблицы
     const createTr = (elem)=>{
         let trs = document.createElement('tr');
-        let tdFio = document.createElement('td');
-        let tdYear = document.createElement('td');
+        let tdTitle = document.createElement('td');
+        let tdImg = document.createElement('td');
         let tdFSlug = document.createElement('td');
-        tdFio.innerText = elem.fio;
-        tdYear.innerText = elem.birth_year;
-        tdYear.innerText = elem.slug;
-        trs.appendChild(tdFio);
-        trs.appendChild(tdYear);
-        trs.appendChild(tdYear);
+        tdTitle.innerText = elem.title;
+        tdImg.innerText = elem.article_img;
+        tdFSlug.innerText = elem.slug;
+        trs.appendChild(tdTitle);
+        trs.appendChild(tdImg);
+        trs.appendChild(tdFSlug);
+        console.log(trs)
         return trs;
     }
-    const makeTable = (el) => {
-        el.forEach((autor)=>{
-            autorTable.appendChild(createTr(autor));
+    const makeTable = (els, tbl) => {
+        els.forEach((article)=>{
+            tbl.appendChild(createTr(article));
         });
     }
 
-    let autors;
+    // Вкладки для вставок
+    const getTable = document.querySelector('.container');
+    const apiTable = document.querySelector('.apiTable');
+    const serchTable = document.querySelector('.serchTable');
+
+    // Поиск
+    //  l;aladl,;
+    const btnSerch = document.querySelector('.button_search');
     let strigs = {
         serchField: 'id',
-        metodfiel: 'hz'
     };
 
-    fetch('/api/articles',{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(strigs),
-    })
-        .then(data=> data.json())
-        .then((data) => {
-            autors = data.data;
-            console.log(autors)
-            makeTable(autors);
-        })
+    // API
+    const btnApi = document.querySelector('.button_api');
+    btnApi.onclick = () => {
 
-    document.write(autors);
+        fetch('/api/articles', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+        })
+            .then(data => data.json())
+            .then((data) => {
+                makeTable(data.data, apiTable);
+            })
+    }
+
 </script>
 
 

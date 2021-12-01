@@ -27,6 +27,7 @@
 <div class="container">
     <table>
     </table>
+
 </div>
 <script>
     const autorTable = document.querySelector('table');
@@ -61,9 +62,10 @@
         .then(data=> data.json())
         .then((data) => {
             autors = data.data;
+            var autorss = data;
             makeTable(autors);
         })
-
 </script>
+{{ $autorss->links() }}
 </body>
 </html>

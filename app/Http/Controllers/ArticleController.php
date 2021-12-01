@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Article;
-use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
 
-class ArticlesController extends Controller
+class ArticleController extends Controller
 {
     private $model;
 
@@ -22,11 +20,23 @@ class ArticlesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
-        return $this->model::paginate(3);
+        $articles = $this->model::paginate(3);
+
+        return view('articles', compact('articles'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -37,8 +47,7 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        $response = $this->model::paginate(3);
-        return $response;
+        //
     }
 
     /**
@@ -49,9 +58,18 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        $res = $this->model::where('fio', 'like', "%{$id}%")->get();
+        //
+    }
 
-        return $res;
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**

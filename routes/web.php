@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,9 +22,7 @@ Route::get('autors', function () {
     return view('autors');
 });
 
-Route::get('articles', function () {
-    return view('articles');
-});
+Route::resource('articles', ArticleController::class);
 
 Route::get('articles-categoryes', function () {
     return view('atriclesCategory');
