@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\ArticlesCategory;
 use App\Models\Autor;
 use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
@@ -51,6 +52,10 @@ class AutorController extends Controller
         $res = $this->model::where('fio', 'like', "%{$id}%")->get();
 
         return $res;
+    }
+    public function articles($slug)
+    {
+        return Autor::find($slug)->articles;
     }
 
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use App\Models\ArticlesCategory;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,11 @@ class ArticlesCategoryController extends Controller
     public function store(Request $request)
     {
         return $this->model::paginate(3);
+    }
+
+    public function articles($slug)
+    {
+        return ArticlesCategory::find($slug)->articles;
     }
 
 }

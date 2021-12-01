@@ -27,3 +27,15 @@ Route::resource('articles', ArticleController::class);
 Route::get('articles-categoryes', function () {
     return view('atriclesCategory');
 });
+
+// Выборки статей
+// по категории
+Route::get(
+    'articles-categoryes/all/{slug}',
+    [\App\Http\Controllers\Api\ArticlesCategoryController::class, 'articles']
+)->name('articles_from_cat');
+//По автору
+Route::get(
+    '/autors/all/{slug}',
+    [\App\Http\Controllers\Api\AutorController::class, 'articles']
+)->name('articles_from_autor');

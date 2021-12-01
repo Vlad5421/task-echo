@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+
 Route::resource('autors', 'App\Http\Controllers\Api\AutorController')->names('restAutor');
 Route::resource('articles-categoryes', 'App\Http\Controllers\Api\ArticlesCategoryController')->names('restArtCategory');
 Route::resource('articles', 'App\Http\Controllers\Api\ArticlesController')->names('restArticles');
+
+
+

@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/app.css" rel="stylesheet" />
 
     <title>Laravel</title>
 
@@ -24,6 +25,8 @@
 
 <h1>Авторы</h1>
 
+<div id="getApi" class="btn">API</div>
+
 <div class="container">
     <table>
     </table>
@@ -31,6 +34,8 @@
 </div>
 <script>
     const autorTable = document.querySelector('table');
+    const getBtn = document.querySelector('#getApi')
+
     const createTr = (elem)=>{
         let trs = document.createElement('tr');
         let tdFio = document.createElement('td');
@@ -50,22 +55,15 @@
         });
     }
 
-    let autors;
-    let strigs = {
-        serchField: 'id',
-        metodfiel: 'hz'
-    };
-
-    fetch('/api/autors',{
+    getBtn.onclick = () => fetch('/api/autors',{
         method: 'POST',
     })
         .then(data=> data.json())
         .then((data) => {
             autors = data.data;
-            var autorss = data;
             makeTable(autors);
         })
 </script>
-{{ $autorss->links() }}
+
 </body>
 </html>
