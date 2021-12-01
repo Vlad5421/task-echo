@@ -2,9 +2,14 @@
 
 ---
 
-# Комметарии к решеним
+# Комметарии к решению
 
-1) В DatabaseSeeder наполнение таблиц разными способами через seeders и factories
+Фронт - не реализовано. Точнее реализовано совсем бедно. Спешил, и что бы связать с фронтом - нужно время.
+Поясню. В Laravel я не делал проектов. А каждый фреймворк тусует папки и подходы к внедрению зависимостей и методике разработки.
+Уходит время на поиск и разбор, как реализована та или иная функция.
+
+
+1) База данных реализована. С внешними ключами, потому что потом делать вборки по связным таблицам.
 2) seeders - сделано
 3) Страницы с реализацией REST API получения авторов, статей, категорий:
    - /autors - список авторов. Не реализовал писк - просмотрел
@@ -16,24 +21,3 @@
 4) JSON Rest API выборки всех данных - не усел, планировал с использованием последних
     2-х пунктов п.3
 5) Со swager не успеваю
-
-
-
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
