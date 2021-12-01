@@ -21,3 +21,25 @@
 4) JSON Rest API выборки всех данных - не усел, планировал с использованием последних
     2-х пунктов п.3
 5) Со swager не успеваю
+ ---
+Равернуть:
+
+git clone https://github.com/Vlad5421/task-echo.git
+cd task-echo
+
+-- Далее команды, если нужно развернуть с оптимизацией
+
+composer install --optimize-autoloader --no-dev
+
+php artisan config:cache
+
+--
+
+Переименовать .env.example в .env
+Дальше - заполнить данные для подключения к БД в файле .env
+
+php artisan migrate:fresh --seed
+
+php artisan serve
+
+Сервер запущен и можно открывать http://127.0.0.1:8000
